@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Numeric Sequence Calculator</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
+    </head>
+    <body>
+        <script>
+            function validation()
+            {
+                if (!isNumericGT0(document.numericSeqForm.totNum.value)) {
+                    document.getElementById('error').innerHTML="Please enter a posetive numeric value greater than 0";
+                return false;
+            }
+
+            function isNumericGT0(str) {
+                var n = Math.floor(Number(str));
+                return n !== Infinity && String(n) === str && n > 0;
+            }
+            
+        }
+        </script>
+
+        <div class="container">
+            <h1>Number Sequence Calculator</h1>
+            <div>
+                <form action="/" method="POST" name="numericSeqForm" onsubmit="return validation()">
+                    <div>
+                        <label>Total Numbers</label>
+                        <input type="text" name="totNum" placeholder="Number">
+                        <div id ="error"> </div>
+                    </div>
+                    <input type="submit">
+                </form>
+            </div>
+            <% if(resultString != undefined) { %>
+
+                <p>
+                    <div>
+                            <label>Full Sequence</label>
+                            <label><%= resultString[0] %></label>
+                        
+                    </div>
+                    <div>
+                            <label>Odd Sequence</label>
+                            <label><%= resultString[1] %></label>
+                    </div>
+                    <div>
+                            <label>Even Sequence</label>
+                            <label><%= resultString[2] %></label>
+                    </div>
+                    <div>
+                            <label>Calculated Sequence</label>
+                            <label><%= resultString[3] %></label>
+                    </div>
+                </p>
+            <%}%>
+
+        </div>
+    </body
+</html>
